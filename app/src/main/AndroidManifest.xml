@@ -9,7 +9,7 @@
     <application
         android:allowBackup="true"
         android:label="ProximityShare"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme=android:theme="@style/Theme.ProximityShare">
         
         <activity
             android:name=".activities.MainActivity"
