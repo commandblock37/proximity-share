@@ -1,6 +1,30 @@
-- name: Build with Gradle
-      run: |
-        if [ ! -f gradlew ]; then
-          gradle wrapper --gradle-version 8.5
-        fi
-        ./gradlew assembleDebug --info
+name: Android CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4.4.0
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Build with Gradle
+        run: |
+          if [ ! -f gradlew ]; then
+            gradle wrapper --gradle-version 8.5
+          fi
+          ./gradlew assembleDebug --info
